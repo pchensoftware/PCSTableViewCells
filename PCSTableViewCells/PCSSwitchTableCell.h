@@ -6,9 +6,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class PCSSwitchTableCell;
+
+@protocol PCSSwitchTableCellDelegate <NSObject>
+- (void)switchTableCellDidChangeSwitchValue:(PCSSwitchTableCell *)cell;
+@end
 
 @interface PCSSwitchTableCell : UITableViewCell
 
 @property (nonatomic, readonly) UISwitch *switcher;
+@property (nonatomic, weak) id<PCSSwitchTableCellDelegate> delegate;
 
 @end

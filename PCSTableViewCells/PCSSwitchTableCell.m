@@ -18,12 +18,14 @@
    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
       self.switcher = [[UISwitch alloc] init];
       self.accessoryView = self.switcher;
+      
+      [self.switcher addTarget:self action:@selector(_switchValueChanged) forControlEvents:UIControlEventValueChanged];
    }
    return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-   [super setSelected:selected animated:animated];
+- (void)_switchValueChanged {
+   [self.delegate switchTableCellDidChangeSwitchValue:self];
 }
 
 @end
